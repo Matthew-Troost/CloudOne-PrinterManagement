@@ -6,7 +6,9 @@ class Printer extends Component {
         this.update = this.update.bind(this);
         this.state = {
             id: props.id,
-            name: props.name
+            name: props.name,
+            status: props.status,
+            ip_address: props.ip_address
         };
     }
 
@@ -19,7 +21,9 @@ class Printer extends Component {
 
         const input = {
             id: this.state.id,
-            name: this.state.name
+            name: this.state.name,
+            status: this.state.status,
+            ip_address: this.state.ip_address
         }
 
         console.log(input);
@@ -39,6 +43,18 @@ class Printer extends Component {
                     placeholder="name"
                     value={this.state.name}
                     onChange={(event) => { this.handleChange('name', event) }}
+                />
+                 <input
+                    name="status"
+                    placeholder="status"
+                    value={this.state.status}
+                    onChange={(event) => { this.handleChange('status', event) }}
+                />
+                 <input
+                    name="ip_address"
+                    placeholder="ip_address"
+                    value={this.state.ip_address}
+                    onChange={(event) => { this.handleChange('ip_address', event) }}
                 />
                 <button onClick={this.update}>
                     Update

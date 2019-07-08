@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from 'aws-amplify';
+import { graphqlOperation } from 'aws-amplify';
 import * as queries from '../graphql/queries';
 import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
 import { Connect } from "aws-amplify-react";
 import Printer from './Printer';
 
-
 class PrinterList extends Component {
-    ListTodos = async () => {
-        const allPrinters = await API.graphql(graphqlOperation(queries.listPrinters));
-        console.log(allPrinters);
-    }
 
     render() {
         return (
@@ -28,12 +23,12 @@ class PrinterList extends Component {
                     if (loading || !listPrinters) return (<h3>Loading...</h3>);
                     return (
                         <div>
-                            <h3>All Primters</h3>
+                            <h3>All Printers</h3>
                             <ul>
                                 {listPrinters.items.map(printer =>
                                     <Connect mutation={graphqlOperation(mutations.updatePrinter)} key={printer.id}>
                                         {({ mutation }) => (
-                                            <Printer id={printer.id} name={printer.name} onUpdate={mutation} />
+                                            <Printer id={printer.id} name={printer.name} status={printer.status} ip_address={printer.ip_address} onUpdate={mutation} />
                                         )}
                                     </Connect>
                                 )}
@@ -42,6 +37,9 @@ class PrinterList extends Component {
                     );
                 }}
             </Connect>
+
+//display a list here and test if live updates work 
+
         );
     }
 }
