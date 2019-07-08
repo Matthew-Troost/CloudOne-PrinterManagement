@@ -1,0 +1,14 @@
+{
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "reactprintermanageme-test-20190707163934-authRole",
+            "UnauthRoleArn": "arn:aws:iam::440288684408:role/reactprintermanageme-test-20190707163934-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::440288684408:role/reactprintermanageme-test-20190707163934-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "reactprintermanageme-test-20190707163934-deployment",
+            "UnauthRoleName": "reactprintermanageme-test-20190707163934-unauthRole",
+            "StackName": "reactprintermanageme-test-20190707163934",
+            "StackId": "arn:aws:cloudformation:us-east-2:440288684408:stack/reactprintermanageme-test-20190707163934/0af60e90-a0c5-11e9-9813-0a2bc77d7190"
+        }
+    }
+}
