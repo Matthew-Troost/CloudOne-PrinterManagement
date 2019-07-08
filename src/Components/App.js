@@ -1,10 +1,15 @@
 import React from 'react';
-import './App.css';
+import '../Styles/App.css';
 import PrinterList from './PrinterList';
+import awsconfig from "../aws-exports";
+import Amplify from 'aws-amplify';
+
+Amplify.configure(awsconfig);
 
 function App() {
   return (
     <div className="App">
+      <PrinterList />
     </div>
   );
 }
