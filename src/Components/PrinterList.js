@@ -5,6 +5,7 @@ import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
 import { Connect } from "aws-amplify-react";
 import Printer from './Printer';
+import { Link } from 'react-router-dom';
 
 class PrinterList extends Component {
 
@@ -26,11 +27,14 @@ class PrinterList extends Component {
                             <h3>All Printers</h3>
                             <ul>
                                 {listPrinters.items.map(printer =>
-                                    <Connect mutation={graphqlOperation(mutations.updatePrinter)} key={printer.id}>
-                                        {({ mutation }) => (
-                                            <Printer id={printer.id} name={printer.name} status={printer.status} ip_address={printer.ip_address} onUpdate={mutation} />
-                                        )}
-                                    </Connect>
+                                    <div>
+                                        <h5>{printer.name}</h5>
+                                        <Link key={printer.id} to={`/modify/${printer.id}`}>
+                                            <button>Edit</button>
+                                        </Link>
+                                        <button>Delete</button>
+                                    </div>
+                                    // <Printer id={printer.id} name={printer.name} status={printer.status} ip_address={printer.ip_address} onUpdate={mutation} />
                                 )}
                             </ul>
                         </div>
@@ -38,7 +42,9 @@ class PrinterList extends Component {
                 }}
             </Connect>
 
-//display a list here and test if live updates work 
+            //display a list here and test if live updates work 
+
+
 
         );
     }
