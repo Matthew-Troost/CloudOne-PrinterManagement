@@ -6,6 +6,7 @@ import NewPrinter from '../Pages/NewPrinter';
 import awsconfig from "../aws-exports";
 import Amplify from 'aws-amplify';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import PrinterList from './PrinterList';
 
 Amplify.configure(awsconfig);
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <h1>Printer Management</h1>
+        <h1>Printer Management</h1>
         <Switch>
           <Route exact path="/" component={AllPrinters} />
           <Route path="/Modify/:id" component={ModifyPrinter} />
@@ -22,7 +23,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-
   );
 }
 

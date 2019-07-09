@@ -1,35 +1,71 @@
 .block {
     border: 1px solid black;
-    width: 500px;
+    width: fit-content;
     padding: 20px;
     border-radius: 5px;
-  }
-
-  .btn {
-	border: none;
-	font-family: inherit;
-	font-size: inherit;
-	color: inherit;
-	background: none;
-	cursor: pointer;
-	padding: 25px 80px;
-	display: inline-block;
-	margin: 15px 30px;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 700;
-	outline: none;
-	position: relative;
-	color: #fff;
-	background: #226fbe;
-	-webkit-transition: none;
-	-moz-transition: none;
-    transition: none;
-    border: 4px solid #226fbe;
-	border-radius: 60px;
-  }
-
-  .btn:hover {
-	background: transparent;
-	color: #226fbe;
+    display: inline-block;
+    margin: 20px;
 }
+
+.btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    color: #fff;
+    background: #226fbe;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+.btn-error{
+    background: #dd3f5b !important;
+    border: 4px solid #dd3f5b !important;
+}
+
+.btn-error:hover{
+    background: transparent !important;
+    color: #dd3f5b !important;
+}
+
+.btn-small{
+    padding: 8px 20px !Important;
+    font-size: 12px !important;
+}
+
+.btn-rounded {
+    border: 4px solid #226fbe;
+    border-radius: 60px;
+}
+
+.btn-square {
+    border: 4px solid #226fbe;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #226fbe;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot-active{
+    background-color: #26b947;
+  }
