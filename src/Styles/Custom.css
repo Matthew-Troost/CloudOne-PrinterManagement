@@ -1,0 +1,35 @@
+.block {
+    border: 1px solid black;
+    width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	color: #fff;
+	background: #226fbe;
+	-webkit-transition: none;
+	-moz-transition: none;
+    transition: none;
+    border: 4px solid #226fbe;
+	border-radius: 60px;
+  }
+
+  .btn:hover {
+	background: transparent;
+	color: #226fbe;
+}

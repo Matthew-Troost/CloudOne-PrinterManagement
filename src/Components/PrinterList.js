@@ -1,15 +1,25 @@
 import React, { Component } from "react";
-import { graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation } from "aws-amplify";
 import * as queries from '../graphql/queries';
 import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
 import { Connect } from "aws-amplify-react";
-import Printer from './Printer';
 import { Link } from 'react-router-dom';
+import '../Styles/Custom.css';
 
 class PrinterList extends Component {
 
+    async DeletePrinter(id) {
+        if (window.confirm('Are you sure you wish to delete this printer?')) {
+            const input = {
+                id: id
+            }
+            await API.graphql(graphqlOperation(mutations.deletePrinter, { input: input }));
+        }
+    }
+
     render() {
+
         return (
             <Connect
                 query={graphqlOperation(queries.listPrinters)}
@@ -24,27 +34,22 @@ class PrinterList extends Component {
                     if (loading || !listPrinters) return (<h3>Loading...</h3>);
                     return (
                         <div>
-                            <h3>All Printers</h3>
-                            <ul>
-                                {listPrinters.items.map(printer =>
-                                    <div>
-                                        <h5>{printer.name}</h5>
-                                        <Link key={printer.id} to={`/modify/${printer.id}`}>
-                                            <button>Edit</button>
-                                        </Link>
-                                        <button>Delete</button>
-                                    </div>
-                                    // <Printer id={printer.id} name={printer.name} status={printer.status} ip_address={printer.ip_address} onUpdate={mutation} />
-                                )}
-                            </ul>
+                            <Link to="/New">
+                                <button className="btn">Create New</button>
+                            </Link>
+                            {listPrinters.items.map(printer =>
+                                <div className="block">
+                                    <h5>{printer.name}</h5>
+                                    <Link key={printer.id} to={`/modify/${printer.id}`}>
+                                        <button>Edit</button>
+                                    </Link>
+                                    <button onClick={() => this.DeletePrinter(printer.id)}>Delete</button>
+                                </div>
+                            )}
                         </div>
                     );
                 }}
             </Connect>
-
-            //display a list here and test if live updates work 
-
-
 
         );
     }

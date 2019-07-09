@@ -44,13 +44,13 @@ class Printer extends Component {
                     value={this.state.name}
                     onChange={(event) => { this.handleChange('name', event) }}
                 />
-                 <input
+                <input
                     name="status"
                     placeholder="status"
                     value={this.state.status}
                     onChange={(event) => { this.handleChange('status', event) }}
                 />
-                 <input
+                <input
                     name="ip_address"
                     placeholder="ip_address"
                     value={this.state.ip_address}
