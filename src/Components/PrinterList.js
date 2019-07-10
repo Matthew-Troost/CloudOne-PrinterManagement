@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from '../graphql/queries';
-import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
-import { Connect } from "aws-amplify-react";
 import { Link } from 'react-router-dom';
 import '../Styles/Custom.css';
+import loader from '../Assets/loading.gif';
 
 class PrinterList extends Component {
 
@@ -27,11 +26,17 @@ class PrinterList extends Component {
                 id: id
             }
             await API.graphql(graphqlOperation(mutations.deletePrinter, { input: input }));
+
+            this.FetchPrinters();
         }
     }
 
     async FetchPrinters() {
+
+        this.setState({ loading: true });
+
         const allPrinters = await API.graphql(graphqlOperation(queries.listPrinters));
+
         this.setState({
             printers: allPrinters.data.listPrinters.items,
             loading: false
@@ -39,23 +44,11 @@ class PrinterList extends Component {
     }
 
     render() {
-        if (this.state.loading) { return (<h3>Loading Printers...</h3>); }
+        if (this.state.loading) { return (<img alt="Loading printers..." src={loader}/>); }
         return (
-            // <Connect
-            //     query={graphqlOperation(queries.listPrinters)}
-            //     subscription={graphqlOperation(subscriptions.onCreatePrinter)}
-            //     onSubscriptionMsg={(prev, { onCreatePrinter }) => {
-            //         console.log(onCreatePrinter);
-            //         return prev;
-            //     }}
-            // >
-            //     {({ data: { listPrinters }, loading, error }) => {
-            //         if (error) return (<h3>Error</h3>);
-            //     if (loading || !listPrinters) return (<h3>Loading...</h3>);
-            // return (
             <div>
                 {this.state.printers.map(printer =>
-                    <div className="block">
+                    <div className="block" key={printer.id}>
                         <h2>{printer.name}</h2>
                         <p>{printer.ip_address}</p>
                         <p>
@@ -68,10 +61,6 @@ class PrinterList extends Component {
                     </div>
                 )}
             </div>
-            //   );
-            // }}
-            // </Connect>
-
         );
     }
 }

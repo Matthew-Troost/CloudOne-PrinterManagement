@@ -29,6 +29,16 @@
     transition: none;
 }
 
+.btn-default{
+    background: #ddd !important;
+    border: 4px solid #ddd !important;
+}
+
+.btn-default:hover{
+    background: transparent !important;
+    color: #ddd !important;
+}
+
 .btn-error{
     background: #dd3f5b !important;
     border: 4px solid #dd3f5b !important;
@@ -68,4 +78,24 @@
 
   .dot-active{
     background-color: #26b947;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  .input-box{
+      width: 50%;
+      margin: 20px;
+  }
+
+  img{
+      width: 150px;
+  }
+
+  .block-link{
+      display: block;
   }

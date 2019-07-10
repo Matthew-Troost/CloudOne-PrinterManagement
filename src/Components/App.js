@@ -6,7 +6,6 @@ import NewPrinter from '../Pages/NewPrinter';
 import awsconfig from "../aws-exports";
 import Amplify from 'aws-amplify';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import PrinterList from './PrinterList';
 
 Amplify.configure(awsconfig);
 
