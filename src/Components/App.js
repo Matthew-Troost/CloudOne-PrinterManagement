@@ -3,11 +3,18 @@ import '../Styles/App.css';
 import AllPrinters from '../Pages/AllPrinters';
 import ModifyPrinter from '../Pages/ModifyPrinter';
 import NewPrinter from '../Pages/NewPrinter';
-import awsconfig from "../aws-exports";
 import Amplify from 'aws-amplify';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-Amplify.configure(awsconfig);
+const config = {
+  "aws_project_region": "us-east-2",
+  "aws_appsync_graphqlEndpoint": "https://w6rye2z6ejfdjfesk4hyscjfqa.appsync-api.us-east-2.amazonaws.com/graphql",
+  "aws_appsync_region": "us-east-2",
+  "aws_appsync_authenticationType": "API_KEY",
+  "aws_appsync_apiKey": "da2-fbhl5xhybzfifhbuai6n3vvwlq"
+};
+
+Amplify.configure(config);
 
 function App() {
   return (
